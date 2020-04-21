@@ -1,12 +1,20 @@
 - hosts: localhost
+  vars_files:
+    - "keypair.yml"
+  vars_prompt:
+    - name: worker
+      prompt: "How many worker nodes"
+      private: no
+    
   tasks:
     - name: Launch AWS instances
       ec2:
-        key_name: mykey
+        aws_access_key: "{{ access_key }}"
+        aws_secret_key: "{{ secret_key }}"
         instance_type: t2.micro
         image: ami-123456
         wait: yes
-        group: webserver
-        count: 3
+        group: workernodes
+        count: "{{ worker }}"
         vpc_subnet_id: subnet-29e63245
         assign_public_ip: yes
