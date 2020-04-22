@@ -3,6 +3,11 @@
     repo: ppa:webupd8team/java
     state: present
 
+- name: Update apt
+  apt:
+    upgrade: yes
+    update_cache: yes
+
 - name: Install package
   package:
     name: oracle-java7-installer

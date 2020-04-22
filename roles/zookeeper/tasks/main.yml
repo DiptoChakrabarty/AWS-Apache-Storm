@@ -1,0 +1,14 @@
+- name: Install zookeeperd
+  package:
+    name: zookeeperd
+    state: present
+- name: create zookeeper user
+  user: 
+
+- name: configure and change conf file
+  copy:
+    src: zoo.conf
+    dest: /etc/zookeeper/conf/zoo.cfg
+    owner:
+    group:
+    
