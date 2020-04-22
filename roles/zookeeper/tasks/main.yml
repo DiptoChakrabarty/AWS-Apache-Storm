@@ -2,9 +2,13 @@
   package:
     name: zookeeperd
     state: present
+
 - name: create zookeeper user
   user: 
-
+    name: storm
+    password:  " {{ storm | password_hash('sha512') }}"
+    group: sudo
+    state: present
 - name: configure and change conf file
   copy:
     src: zoo.conf
