@@ -12,11 +12,12 @@
         aws_access_key: "{{ access_key }}"
         aws_secret_key: "{{ secret_key }}"
         instance_type: t2.micro
-        image: ami-123456
+        image: "{{ ami }}"
         wait: yes
-        group: workernodes
-        count: "{{ worker }}"
-        vpc_subnet_id: subnet-29e63245
+        group: "{{ group }}"
+        count: 1
+        region: "{{ region }}"
+        vpc_subnet_id: "{{ subnet }}"
         assign_public_ip: yes
       register: ec2
 

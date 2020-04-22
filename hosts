@@ -1,1 +1,2 @@
-localhost
+[localhost]
+localhost ansible_connection=local ansible_python_interpreter=/home/chuck/Desktop/Projects/apache-storm/venv/bin/python3

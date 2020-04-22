@@ -1,0 +1,20 @@
+- hosts: localhost
+  vars_files:
+    - "keypair.yml"
+  tasks:
+    - name: Launch AWS instances
+      ec2:
+        aws_access_key: "{{ access_key }}"
+        aws_secret_key: "{{ secret_key }}"
+        instance_type: t2.micro
+        image: ami-0620d12a9cf777c87
+        wait: yes
+        group: Devops
+        count: 1
+        region: ap-south-1
+        vpc_subnet_id: subnet-21f0d949
+        assign_public_ip: yes
+      register: ec2
+
+    - debug:
+        msg: "{{ ec2 }}"
