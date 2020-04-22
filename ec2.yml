@@ -1,6 +1,6 @@
 - hosts: localhost
   vars_files:
-    - "keypair.yml"
+    - "key.yml"
   vars_prompt:
     - name: worker
       prompt: "How many worker nodes"
@@ -24,19 +24,20 @@
     - name: Create ssh group to login dynamically to EC2 Instance
       add_host: 
         hostname: "{{ item.public_ip }}"
-        groupname: ec2_server
-      with_items: ec2.instances
+        groupname: stormcluster
+      with_items: "{{ ec2.instances }}"
+    
+    
+    - name: add aws ips 
+      template:
+        src: hostsnew
+        dest: hostsfile
+      with_items: "{{ ec2.instances }}"
 
     - name: Wait for ssh to come up
       wait_for: 
         host: "{{ item.public_ip }}" 
         port: 22 
         state: started
-      with_items: ec2.instances
+      with_items: "{{ ec2.instances }}"
 
-- hosts: ec2_server
-  become: yes
-  remote_user: ubuntu 
-  gather_facts: yes
-  roles:
-    - webserver
