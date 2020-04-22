@@ -2,4 +2,11 @@
 localhost ansible_connection=local ansible_python_interpreter=/home/chuck/Desktop/Projects/apache-storm/venv/bin/python3
 
 
-[stormcluster]
+
+[stormclusters]
+
+{% for item in ec2.instances %}
+
+    {{ item.public_ip }}
+
+{% endfor %}

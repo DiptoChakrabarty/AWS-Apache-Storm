@@ -1,0 +1,10 @@
+- name: Add jdk repo
+  apt_repository:
+    repo: ppa:webupd8team/java
+    state: present
+
+- name: Install package
+  package:
+    name: oracle-java7-installer
+    state: present
+  
