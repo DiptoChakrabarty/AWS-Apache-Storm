@@ -40,5 +40,23 @@
     name: zookeeper
     state: started
     enabled: yes
-    
+
+- name: Add service files
+  copy:
+    src: nimbus 
+    dest: /etc/init/nimbus.conf
+
+- name: Add  for ui file
+  copy:
+    src:  ui
+    dest: /etc/init/ui.conf
+
+- name: start all services
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items:
+    - nimbus
+    - ui
+
     
