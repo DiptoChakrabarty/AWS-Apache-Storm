@@ -80,6 +80,10 @@
 
 - hosts: nimbus
   tasks:
+    - copy:
+        src: hostsfile
+        dest: /etc/hosts 
+
     - include_role:
         name: 
           - storm
@@ -87,6 +91,9 @@
 
 - hosts: workernodes
   tasks:
+  - copy:
+      src: hostsfile
+      dest: /etc/hosts 
   - include_role:
       name: storm
   - copy:
