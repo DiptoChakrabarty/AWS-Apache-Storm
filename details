@@ -47,3 +47,8 @@ ok: [localhost] => {
         "tagged_instances": []
     }
 }
+{% for item in ec2.instances %}
+
+{{ item.public_ip  }}  slave1.foo.com      slave1
+
+{% endfor %}
