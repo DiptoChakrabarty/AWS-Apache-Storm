@@ -1,7 +1,7 @@
-[stormclusters]
+{{ ec2_nimbus.istances.public_ip }} nimbus.foo.com  nimbus
 
 {% for item in ec2.instances %}
 
-    {{ item.public_ip  }}
+{{ item.public_ip  }}  slave1.foo.com      slave1
 
 {% endfor %}
