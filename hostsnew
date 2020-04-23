@@ -2,6 +2,6 @@
 
 {% for item in ec2.instances %}
 
-    {{ item.public_ip }}
+    {{ item.public_ip  }}
 
 {% endfor %}

@@ -1,7 +1,3 @@
-- name: Install zookeeperd
-  package:
-    name: zookeeperd
-    state: present
 
 - name: create zookeeper user
   user: 
@@ -9,6 +5,24 @@
     password:  " {{ storm | password_hash('sha512') }}"
     group: sudo
     state: present
+
+- name: download zookeeper tar
+  get_url:
+    url: http://www.gtlib.gatech.edu/pub/apache/zookeeper/stable/zookeeper-3.4.6.tar.gz
+    dest: /root/
+    owner: "{{ storm }}"
+
+- name: Untar zookeeper 
+  unarchive:
+    src: /root/zookeeper-3.4.6.tar.gz
+    dest: /root/
+    owner: "{{ storm }}"
+- name: copy contents
+  copy:
+    src: /root/zookeeper-3.4.6
+    dest: /etc/zookeeper/
+    owner: zookeeper
+
 - name: configure and change conf file
   copy:
     src: zoo.conf
