@@ -1,0 +1,16 @@
+author "Dipto"
+description "start and stop storm nimbus"
+ 
+start on runlevel [2345]
+stop on runlevel [^2345]
+ 
+console log
+chdir /home/storm
+setuid storm
+setgid storm
+ 
+respawn
+# respawn the job up to 20 times within a 5 second period.
+respawn limit 20 5
+ 
+exec /root/apache-storm-0.9.5/bin/storm nimbus
