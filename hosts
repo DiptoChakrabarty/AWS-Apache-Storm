@@ -3,10 +3,3 @@ localhost ansible_connection=local ansible_python_interpreter=/home/chuck/Deskto
 
 
 
-[stormclusters]
-
-{% for item in ec2.instances %}
-
-    {{ item.public_ip }}
-
-{% endfor %}
