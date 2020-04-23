@@ -7,7 +7,7 @@
       private: no
     
   tasks:
-    - name: Launch AWS instances
+    - name: Launch AWS nimbus node
       ec2:
         aws_access_key: "{{ access_key }}"
         aws_secret_key: "{{ secret_key }}"
@@ -19,12 +19,32 @@
         region: "{{ region }}"
         vpc_subnet_id: "{{ subnet }}"
         assign_public_ip: yes
+      register: ec2_nimbus
+    
+    - name: Launch AWS supervisior nodes
+      ec2:
+        aws_access_key: "{{ access_key }}"
+        aws_secret_key: "{{ secret_key }}"
+        instance_type: t2.micro
+        image: "{{ ami }}"
+        wait: yes
+        group: "{{ group }}"
+        count: "{{ worker }}"
+        region: "{{ region }}"
+        vpc_subnet_id: "{{ subnet }}"
+        assign_public_ip: yes
       register: ec2
 
-    - name: Create ssh group to login dynamically to EC2 Instance
+    - name: Create ssh group to login dynamically to EC2 Instance nimbus nodes
       add_host: 
         hostname: "{{ item.public_ip }}"
-        groupname: stormcluster
+        groupname: workernodes
+      with_items: "{{ ec2_nimbus.instances }}"
+
+    - name: Create ssh group to login dynamically to EC2 Instance worker nodes
+      add_host: 
+        hostname: "{{ item.public_ip }}"
+        groupname: workernodes
       with_items: "{{ ec2.instances }}"
     
     
@@ -32,12 +52,16 @@
       template:
         src: hostsnew
         dest: hostsfile
-      with_items: "{{ ec2.instances }}"
+      with_items: 
+        - "{{ ec2.instances }}"
+        - "{{ ec2_nimbus.instances }}"
 
     - name: Wait for ssh to come up
       wait_for: 
         host: "{{ item.public_ip }}" 
         port: 22 
         state: started
-      with_items: "{{ ec2.instances }}"
+        with_items: 
+          - "{{ ec2.instances }}"
+          - "{{ ec2_nimbus.instances }}"
 
