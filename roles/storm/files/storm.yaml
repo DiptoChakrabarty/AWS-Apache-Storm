@@ -1,0 +1,4 @@
+storm.zookeeper.servers:
+    - nimbus1
+    
+nimbus.host: nimbus1

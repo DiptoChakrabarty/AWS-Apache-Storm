@@ -1,0 +1,28 @@
+- name: create zookeeper group
+  group:
+    name: storm
+    state: present
+
+- name: create zookeeper user
+  user: 
+    name: storm
+    password:  " {{ storm | password_hash('sha512') }}"
+    group: sudo
+    state: present
+
+- name: download apache storm tar
+  get_url:
+    url: http://www.gtlib.gatech.edu/pub/apache/storm/apache-storm-0.9.2-incubating/apache-storm-0.9.2-incubating.tar.gz
+    dest: /root/
+
+- name: Untar apache storm
+  unarchive:
+    src: /root/apache-storm-0.9.2-incubating.tar.gz
+    dest: /root/
+    owner: storm
+    group: storm
+
+- name: copy config file
+  copy:
+    src: storm.yaml
+    dest: /root/apache-storm-0.9.2/conf/storm.yaml

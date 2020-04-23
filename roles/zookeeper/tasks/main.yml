@@ -1,4 +1,9 @@
 
+- name: create zookeeper group
+  group:
+    name: zookeeper
+    state: present
+
 - name: create zookeeper user
   user: 
     name: storm
@@ -27,6 +32,13 @@
   copy:
     src: zoo.conf
     dest: /etc/zookeeper/conf/zoo.cfg
-    owner:
-    group:
+    owner: "{{ storm }}"
+    group: zookeeper
+
+- name: Start zookeeper service
+  service:
+    name: zookeeper
+    state: started
+    enabled: yes
+    
     
