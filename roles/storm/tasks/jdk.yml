@@ -5,8 +5,8 @@
 
 - name: Update apt
   apt:
-    upgrade: yes
     update_cache: yes
+    
 
 - name: Install package
   package:
