@@ -5,7 +5,7 @@
     line: " "
 
 - name: remove binary
-  command: "sudo rm -vf /var/lib/apt/lists/*"
+  command: "apt-get update -y"
 
 
 
@@ -14,7 +14,11 @@
     validate_certs: no
     repo: ppa:webupd8team/java
     state: present
-    update_cache: yes
+    update_cache: no
+
+
+- name: update binary
+  command: "apt-get update -y"
 
 
 
