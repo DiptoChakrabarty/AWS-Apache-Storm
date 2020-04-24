@@ -1,15 +1,19 @@
 - name: Add jdk repo
   apt_repository:
+    validate_certs: no
     repo: ppa:webupd8team/java
     state: present
+    update_cache: no
 
-- name: Update apt
-  apt:
-    update_cache: yes
-    
+- name: update 
+  command: "sudo apt-get update -y"
 
-- name: Install package
+
+- name: Install packages
   package:
-    name: oracle-java7-installer
+    name: "{{ item }}"
     state: present
+  with_items:
+    - oracle-java7-installer
+    - oracle-java7-set-default
   
