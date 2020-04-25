@@ -13,11 +13,11 @@
 - name: download apache storm tar
   get_url:
     url: http://apachemirror.wuchna.com/storm/apache-storm-2.1.0/apache-storm-2.1.0.tar.gz
-    dest: /root/
+    dest: /root/storm.tar.gz
 
 - name: Untar apache storm
   unarchive:
-    src: /root/apache-storm-2.1.0-incubating.tar.gz
+    src: /root/storm.tar.gz
     dest: /root/
     owner: storm
     group: storm
