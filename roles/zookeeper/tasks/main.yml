@@ -17,12 +17,6 @@
     dest: /root/zookeeper.tar.gz
     owner: "{{ storm }}"
 
-- name: Untar zookeeper 
-  unarchive:
-    src: /root/zookeeper.tar.gz
-    dest: /root/
-    owner: "{{ storm }}"
-    remote_src: yes
 
 - name: Create directory
   file:
@@ -30,15 +24,13 @@
     owner: "{{ storm }}"
     state: directory
 
-
-
-
-- name: copy contents
-  copy:
-    src: /root/apache-zookeeper-3.6.0-bin
-    dest: /etc/zookeeper/
-    owner:  "{{ storm }}"
+- name: Untar zookeeper 
+  unarchive:
+    src: /root/zookeeper.tar.gz
+    dest: /etc/zookeeper
+    owner: "{{ storm }}"
     remote_src: yes
+  
 
 - name: configure and change conf file
   copy:
