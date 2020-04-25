@@ -6,7 +6,7 @@
 
 - name: create zookeeper user
   user: 
-    name: storm
+    name: "{{ storm }}"
     password:  " {{ storm | password_hash('sha512') }}"
     group: sudo
     state: present
