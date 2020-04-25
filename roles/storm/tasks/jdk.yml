@@ -9,25 +9,12 @@
 
 
 
-- name: Add jdk repo
-  apt_repository:
-    validate_certs: no
-    repo: ppa:webupd8team/java
-    state: present
-    update_cache: no
-
-
-- name: update binary
-  command: "apt-get update -y"
-
-
-
-
-
 
 - name: Install packages
   apt:
     name: openjdk-8-jdk
     state: present
+    update_cache: yes
+    force: yes
   
   
