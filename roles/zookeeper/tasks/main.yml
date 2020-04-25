@@ -24,16 +24,25 @@
     owner: "{{ storm }}"
     remote_src: yes
 
+- name: Create directory
+  file:
+    path: /etc/zookeeper
+    owner: "{{ storm }}"
+    state: directory
+
+
+
+
 - name: copy contents
   copy:
     src: /root/apache-zookeeper-3.6.0-bin
     dest: /etc/zookeeper/
-    owner: zookeeper
+    owner:  "{{ storm }}"
     remote_src: yes
 
 - name: configure and change conf file
   copy:
-    src: zoo.conf
+    src: zoo.cfg
     dest: /etc/zookeeper/conf/zoo.cfg
     owner: "{{ storm }}"
     group: zookeeper
