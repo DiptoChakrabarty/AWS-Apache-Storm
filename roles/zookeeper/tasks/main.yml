@@ -18,16 +18,11 @@
     owner: "{{ storm }}"
 
 
-- name: Create directory
-  file:
-    path: /etc/zookeeper
-    owner: "{{ storm }}"
-    state: directory
 
 - name: Untar zookeeper 
   unarchive:
     src: /root/zookeeper.tar.gz
-    dest: /etc/zookeeper
+    dest: /etc/
     owner: "{{ storm }}"
     remote_src: yes
   
@@ -35,15 +30,11 @@
 - name: configure and change conf file
   copy:
     src: zoo.cfg
-    dest: /etc/zookeeper/conf/zoo.cfg
+    dest: /etc/apache-zookeeper-3.6.0-bin/conf/zoo.cfg
     owner: "{{ storm }}"
     group: zookeeper
 
-- name: Start zookeeper service
-  service:
-    name: zookeeper
-    state: started
-    enabled: yes
+
 
 - name: Add service files
   copy:
@@ -55,11 +46,18 @@
     src:  ui
     dest: /etc/init/ui.conf
 
+- name: Copy ZK service file
+  copy:
+    src: zookeeper.service
+    dest: /etc/systemd/system/zookeeper.service
+    
+
 - name: start all services
   service:
     name: "{{ item }}"
     state: started
   with_items:
+    - zookeeper
     - nimbus
     - ui
 
