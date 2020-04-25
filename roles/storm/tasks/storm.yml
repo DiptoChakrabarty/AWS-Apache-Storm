@@ -18,7 +18,7 @@
 - name: Untar apache storm
   unarchive:
     src: /root/storm.tar.gz
-    dest: /root/
+    dest: /usr/share/
     owner: storm
     group: storm
     remote_src: yes
@@ -26,4 +26,12 @@
 - name: copy config file
   copy:
     src: storm.yaml
-    dest: /root/apache-storm-2.1.0/conf/storm.yaml
+    dest: /usr/share/apache-storm-2.1.0/conf/storm.yaml
+
+- name: linking
+  file:
+    src: "/usr/share/apache-storm-2.1.0/bin/storm"
+    dest: /usr/bin/storm
+    owner: storm
+    group: storm
+    state: link

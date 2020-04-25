@@ -35,21 +35,19 @@
     group: zookeeper
 
 
-
-- name: Add service files
-  copy:
-    src: nimbus 
-    dest: /etc/init/nimbus.conf
-
-- name: Add  for ui file
-  copy:
-    src:  ui
-    dest: /etc/init/ui.conf
-
 - name: Copy ZK service file
   copy:
     src: zookeeper.service
     dest: /etc/systemd/system/zookeeper.service
+
+- name: Add nimbus and ui  service files
+  template:
+    src: serivcetemplate
+    dest: "/etc/systemd/system/storm-{{ item }}.service"
+  with_items:
+    - nimbus
+    - ui
+
     
 
 - name: start all services
