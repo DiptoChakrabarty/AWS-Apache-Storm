@@ -29,6 +29,7 @@
     src: /root/apache-zookeeper-3.6.0-bin
     dest: /etc/zookeeper/
     owner: zookeeper
+    remote_src: yes
 
 - name: configure and change conf file
   copy:
