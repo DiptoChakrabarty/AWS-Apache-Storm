@@ -42,7 +42,7 @@
 
 - name: Add nimbus and ui  service files
   template:
-    src: "serivces.j2"
+    src: "services.j2"
     dest: "/etc/systemd/system/storm-{{ item }}.service"
   with_items:
     - nimbus
