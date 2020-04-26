@@ -50,15 +50,6 @@
       with_items:
         - "{{ ec2_nimbus.instances }}"
         - "{{ ec2.instances }}"
-
-    - name: Create ssh group to login dynamically to EC2 Instance worker nodes
-      add_host: 
-        hostname: "{{ item.public_ip }}"
-        groupname: workernodes
-      with_items:
-          - "{{ ec2_nimbus.instances }}"
-          - "{{ ec2.instances }}"
-  
     
     
     - name: add aws ips 
@@ -79,17 +70,31 @@
           - "{{ ec2_nimbus.instances }}"
 
 - hosts: nimbus
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  remote_user: ubuntu
+  connection: ssh
+  become: yes
+  gather_facts: no
+  
   tasks:
     - copy:
-        src: hostsfile
+        src: hostnew
         dest: /etc/hosts 
-
-    - include_role:
-        name: 
-          - storm
-          - zookeeper
+    - include_role: 
+        name: "{{ item }}"
+      with_items:
+        - storm
+        - zookeeper
 
 - hosts: workernodes
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  remote_user: ubuntu
+  connection: ssh
+  become: yes
+  gather_facts: no
+  
   tasks:
   - copy:
       src: hostsfile
