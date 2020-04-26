@@ -7,6 +7,37 @@
       private: no
     
   tasks:
+    - name: Create a security group
+      ec2_group:
+        key_name: "{{ key_name }}"
+        aws_access_key: "{{ access_key }}"
+        aws_secret_key: "{{ secret_key }}"
+        name: "{{ security_group }}"
+        region: "{{ region }}"
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 8080
+            to_port: 8080
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 443
+            to_port: 443
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
+        rules_egress:
+          - proto: all
+            cidr_ip: 0.0.0.0/0
+      register: basic_firewall
+
+
+
     - name: Launch AWS nimbus node
       ec2:
         key_name: "{{ key_name }}"
@@ -15,7 +46,7 @@
         instance_type: t2.micro
         image: "{{ ami }}"
         wait: yes
-        group: "{{ group }}"
+        group: "{{ security_group }}"
         count: 1
         region: "{{ region }}"
         vpc_subnet_id: "{{ subnet }}"
@@ -30,7 +61,7 @@
         instance_type: t2.micro
         image: "{{ ami }}"
         wait: yes
-        group: "{{ group }}"
+        group: "{{ security_group }}"
         count: "{{ worker }}"
         region: "{{ region }}"
         vpc_subnet_id: "{{ subnet }}"
