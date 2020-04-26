@@ -60,7 +60,7 @@
         - "{{ ec2_nimbus.instances }}"
         - "{{ ec2.instances }}"
 
-    - name: Create ssh group to login dynamically to EC2 Instance nimbus nodes
+    - name: Create ssh group to login dynamically to EC2 Instance worker nodes
       add_host: 
         hostname: "{{ item.public_ip }}"
         groupname: workernodes
@@ -108,7 +108,7 @@
 
   tasks:
   - copy:
-      src: hostsnew
+      src: hostnew
       dest: /etc/hosts 
   - include_role:
       name: storm
