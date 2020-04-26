@@ -9,11 +9,12 @@
   tasks:
     - name: Create a security group
       ec2_group:
-        key_name: "{{ key_name }}"
         aws_access_key: "{{ access_key }}"
         aws_secret_key: "{{ secret_key }}"
         name: "{{ security_group }}"
         region: "{{ region }}"
+        state: present
+        description: Create new Security Group
         rules:
           - proto: tcp
             from_port: 22
