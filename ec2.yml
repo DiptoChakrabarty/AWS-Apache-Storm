@@ -38,10 +38,8 @@
     - name: create hosts file 
       template:
         src: hostsnew.j2
-        dest: hostsend
-      with_items:
-        - "{{ ec2_nimbus.instances }}"
-        - "{{ ec2.instances }}"
+        dest: hostnew
+      
 
     - name: Create ssh group to login dynamically to EC2 Instance nimbus nodes
       add_host: 
@@ -97,7 +95,7 @@
 
   tasks:
   - copy:
-      src: hostsfile
+      src: hostsnew
       dest: /etc/hosts 
   - include_role:
       name: storm

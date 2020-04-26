@@ -1,12 +1,12 @@
 {{ ec2_nimbus['instances']['public_ip'] }} nimbus.foo.com  nimbus
 
-{% count=0 %}
+count: 0
 
-{% for item in ec2.instances %}
+{% for item in ec2 %}
 
-{{ item['public_ip'] }} node{{ count }}.foo.com  node{{ count }}
+{{ item['instances']['public_ip'] }}  node{{ count }}.foo.com  node{{ count }}
 
-{% count=count + 1 %}
+count: "{ count + 1 }"
 
 {% endfor %}
 
