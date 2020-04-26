@@ -114,7 +114,7 @@
       name: storm
   - copy:
       src: supervisior.conf
-      dest: /etc/init/supervisor.conf
+      dest: /etc/systemd/system/supervisor.conf
   - service:
       name: supervisior
       state: started
