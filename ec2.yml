@@ -145,9 +145,11 @@
       dest: /etc/hosts 
   - include_role:
       name: storm
-  - copy:
-      src: supervisor.conf
+  - template:
+      src: supervisor.conf.j2
       dest: /etc/systemd/system/supervisor.service
+    with_items:
+      - supervisor
   - service:
       name: supervisor
       state: started
