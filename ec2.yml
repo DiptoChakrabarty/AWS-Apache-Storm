@@ -33,8 +33,16 @@
             to_port: 80
             cidr_ip: 0.0.0.0/0
           - proto: icmp
-            from_port: all
-            to_port: all
+            from_port: 8 
+            to_port:  -1
+            cidr_ip: 0.0.0.0/0
+          - proto: icmp
+            from_port: 22
+            to_port:  22
+            cidr_ip: 0.0.0.0/0
+          - proto: icmp
+            from_port: 80
+            to_port:  80
             cidr_ip: 0.0.0.0/0
         rules_egress:
           - proto: all
@@ -85,8 +93,8 @@
     - name: create hosts file 
       lineinfile:
         path: hostnew
-        regexp: " node1.foo.com  node1"
-        line: "{{ item['public_ip'] }} node1.foo.com  node1"
+        regexp: " node.foo.com  node"
+        line: "{{ item['public_ip'] }} {{ item['public_dns_name'] }}  {{ item['public_dns_name'] }}"
       with_items: 
       - "{{ ec2.instances }}"
         
