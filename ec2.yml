@@ -93,7 +93,7 @@
     - name: create hosts file 
       lineinfile:
         path: hostnew
-        regexp: " node.foo.com  node"
+        regexp: " ap-south-1.compute.amazonaws.com"
         line: "{{ item['public_ip'] }} {{ item['public_dns_name'] }}  {{ item['public_dns_name'] }}"
       with_items: 
       - "{{ ec2.instances }}"
