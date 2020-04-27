@@ -1,20 +1,2 @@
-13.127.255.216 nimbus.foo.com  nimbus
-13.234.239.21 node1.foo.com  node1
-13.233.172.252 nimbus.foo.com  nimbus
-13.233.114.90 node1.foo.com  node1
-15.206.79.253 nimbus.foo.com  nimbus
-13.126.79.38 node1.foo.com  node1
-13.127.179.146 nimbus.foo.com  nimbus
-13.235.241.39 node1.foo.com  node1
-15.206.172.253 nimbus.foo.com  nimbus
-15.206.66.185 node1.foo.com  node1
-3.6.40.242 nimbus.foo.com  nimbus
-13.232.107.133 node1.foo.com  node1
-15.206.79.72 nimbus.foo.com  nimbus
-13.233.186.188 node1.foo.com  node1
-13.232.113.187 nimbus.foo.com  nimbus
-13.126.249.54 node1.foo.com  node1
-13.235.100.249 nimbus.foo.com  nimbus
-13.235.113.141 node1.foo.com  node1
-13.234.38.170 nimbus.foo.com  nimbus
-3.6.93.229 node1.foo.com  node1
+nimbus.foo.com  nimbus
+node1.foo.com  node1
