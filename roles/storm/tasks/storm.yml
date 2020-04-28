@@ -28,6 +28,12 @@
     src: storm.yaml
     dest: /usr/share/apache-storm-2.1.0/conf/storm.yaml
 
+- name: create directory
+  file:
+    path: /usr/bin/storm
+    state: directory
+    recurse: yes
+
 - name: linking
   file:
     src: "/usr/share/apache-storm-2.1.0/bin/storm"

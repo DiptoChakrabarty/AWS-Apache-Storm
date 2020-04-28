@@ -8,10 +8,10 @@ After=network.target
 Type=simple
 User=zookeeper
 Group=zookeeper
-WorkingDirectory=/opt/zookeeper
-ExecStart=/etc/apache-zookeeper-3.6.0-bin/bin/zkServer.sh start-foreground /opt/zookeeper/conf/zoo.cfg
-ExecStop=/etc/apache-zookeeper-3.6.0-bin/bin/zkServer.sh stop /opt/zookeeper/conf/zoo.cfg
-ExecReload=/etc/apache-zookeeper-3.6.0-bin/bin/zkServer.sh restart /opt/zookeeper/conf/zoo.cfg
+WorkingDirectory=/etc/apache-zookeeper-3.6.0-bin
+ExecStart=/etc/apache-zookeeper-3.6.0-bin/bin/zkServer.sh start-foreground /etc/apache-zookeeper-3.6.0-bin/conf/zoo.cfg
+ExecStop=/etc/apache-zookeeper-3.6.0-bin/bin/zkServer.sh stop /etc/apache-zookeeper-3.6.0-bin/conf/zoo.cfg
+ExecReload=/etc/apache-zookeeper-3.6.0-bin/bin/zkServer.sh restart /etc/apache-zookeeper-3.6.0-bin/conf/zoo.cfg
 
 [Install]
 WantedBy=default.target
