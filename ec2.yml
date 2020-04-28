@@ -136,6 +136,9 @@
   gather_facts: no
   
   tasks:
+    - apt:
+        name: python 
+        state: present
     - copy:
         src: hostnew
         dest: /etc/hosts 
@@ -154,19 +157,22 @@
   gather_facts: no
 
   tasks:
-  - copy:
-      src: hostnew
-      dest: /etc/hosts 
-  - include_role:
-      name: storm
-  - template:
-      src: supervisor.conf.j2
-      dest: /etc/systemd/system/supervisor.service
-    with_items:
-      - supervisor
-  - service:
-      name: supervisor
-      state: started
-    
+    - apt:
+        name: python 
+        state: present
+    - copy:
+        src: hostnew
+        dest: /etc/hosts 
+    - include_role:
+        name: storm
+    - template:
+        src: supervisor.conf.j2
+        dest: /etc/systemd/system/supervisor.service
+      with_items:
+        - supervisor
+    - service:
+        name: supervisor
+        state: started
+      
 
 
