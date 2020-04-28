@@ -12,6 +12,8 @@ source /venv/bin/activate
 which python3
 
 add output in python_interpreter in hosts file
+
+Also install boto3 and boto
 ```
 
 - First add your keys in vault file
