@@ -2,7 +2,7 @@
 Description={{item}} service
 [Service]
 Type=simple
-ExecStart=/usr/bin/storm {{item}}
+ExecStart=/usr/share/apache-storm-2.1.0/bin/storm {{item}}
 Restart=always
 PIDFile=/var/run/%i.pid
 User=storm
