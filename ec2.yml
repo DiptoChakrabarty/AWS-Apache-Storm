@@ -136,9 +136,7 @@
   gather_facts: no
   
   tasks:
-    - apt:
-        name: python 
-        state: present
+    
     - copy:
         src: hostnew
         dest: /etc/hosts 
@@ -157,9 +155,7 @@
   gather_facts: no
 
   tasks:
-    - apt:
-        name: python 
-        state: present
+    
     - copy:
         src: hostnew
         dest: /etc/hosts 
