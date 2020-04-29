@@ -140,11 +140,17 @@
     - copy:
         src: hostnew
         dest: /etc/hosts 
+    - apt:
+          update_cache: yes
+    - apt:
+        name: python
+        state: present
     - include_role: 
         name: "{{ item }}"
       with_items:
         - storm
         - zookeeper
+    - command: "sudo apt-get install python"
 
 - hosts: workernodes
   vars:
@@ -156,9 +162,18 @@
 
   tasks:
     
+
+    
+        
     - copy:
         src: hostnew
         dest: /etc/hosts 
+    
+    - apt:
+        update_cache: yes
+    - apt:
+        name: python
+        state: present
     - include_role:
         name: storm
     - template:
