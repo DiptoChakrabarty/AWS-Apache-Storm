@@ -160,11 +160,7 @@
   become: yes
   gather_facts: no
 
-  tasks:
-    
-
-    
-        
+  tasks:   
     - copy:
         src: hostnew
         dest: /etc/hosts 
