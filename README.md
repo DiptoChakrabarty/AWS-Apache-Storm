@@ -27,11 +27,9 @@ Add AWS keys
 Also add security group name you want
 
 Key is to be present from before
-
 ```
 - Run playbook using
 
 ```sh
 ansible-playbook  --vault-password-file=".password" -i ./hosts ec2.yml
-
 ```
