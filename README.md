@@ -33,3 +33,5 @@ Key is to be present from before
 ```sh
 ansible-playbook  --vault-password-file=".password" -i ./hosts ec2.yml
 ```
+
+<img src="images/storm.png">
