@@ -3,6 +3,15 @@
 
 ## How to Run 
 
+- Add you aws pem key to ssh
+```sh
+  ssh-add <pem kay name>
+
+
+  change  private_key_file  path in ansible.cfg with your private key path
+
+```
+
 - Activate virtualenvironment first
 ```sh
 source /venv/bin/activate
