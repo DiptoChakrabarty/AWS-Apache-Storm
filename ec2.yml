@@ -29,6 +29,10 @@
             to_port: 443
             cidr_ip: 0.0.0.0/0
           - proto: tcp
+            from_port: 6700
+            to_port: 6700
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
             from_port: 80
             to_port: 80
             cidr_ip: 0.0.0.0/0
@@ -43,6 +47,10 @@
           - proto: icmp
             from_port: 80
             to_port:  80
+            cidr_ip: 0.0.0.0/0
+          - proto: icmp
+            from_port: 6700
+            to_port:  6700
             cidr_ip: 0.0.0.0/0
         rules_egress:
           - proto: all
@@ -172,6 +180,12 @@
         state: present
     - include_role:
         name: storm
+    - lineinfile:
+        path: /usr/share/apache-storm-2.1.0/conf/storm.yaml
+        line: "{{ item }}"
+      with_items:
+        - "supervisor.slots.ports:"
+        - "- 6700"
     - template:
         src: supervisor.conf.j2
         dest: /etc/systemd/system/supervisor.service
@@ -183,3 +197,6 @@
       
 
 
+
+
+        
