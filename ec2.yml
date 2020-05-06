@@ -48,10 +48,6 @@
             from_port: 80
             to_port:  80
             cidr_ip: 0.0.0.0/0
-          - proto: icmp
-            from_port: 6700
-            to_port:  6700
-            cidr_ip: 0.0.0.0/0
         rules_egress:
           - proto: all
             cidr_ip: 0.0.0.0/0
