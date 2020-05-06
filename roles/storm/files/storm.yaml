@@ -2,3 +2,7 @@ storm.zookeeper.servers:
     - "nimbus"
     
 nimbus.seeds: ["nimbus"]
+
+
+
+storm.local.dir: "/var/storm"

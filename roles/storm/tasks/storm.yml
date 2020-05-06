@@ -36,3 +36,10 @@
     owner: storm
     group: storm
     state: link
+
+- name: Create Directory
+  file:
+    path: /var/storm
+    state: directory
+    owner: storm
+    group: storm
