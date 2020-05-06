@@ -1,9 +1,4 @@
 node1.foo.com  node1
-13.234.77.207 nimbus.foo.com  nimbus
+13.233.232.180 nimbus.foo.com  nimbus
 
-13.126.171.98 ec2-13-126-171-98.ap-south-1.compute.amazonaws.com  ec2-13-126-171-98.ap-south-1.compute.amazonaws.com
-13.127.134.98 ec2-13-127-134-98.ap-south-1.compute.amazonaws.com  ec2-13-127-134-98.ap-south-1.compute.amazonaws.com
-13.233.212.192 ec2-13-233-212-192.ap-south-1.compute.amazonaws.com  ec2-13-233-212-192.ap-south-1.compute.amazonaws.com
-13.233.87.129 ec2-13-233-87-129.ap-south-1.compute.amazonaws.com  ec2-13-233-87-129.ap-south-1.compute.amazonaws.com
-13.232.71.173 ec2-13-232-71-173.ap-south-1.compute.amazonaws.com  ec2-13-232-71-173.ap-south-1.compute.amazonaws.com
-13.127.46.222 ec2-13-127-46-222.ap-south-1.compute.amazonaws.com  ec2-13-127-46-222.ap-south-1.compute.amazonaws.com
+13.232.217.190 ec2-13-232-217-190.ap-south-1.compute.amazonaws.com  ec2-13-232-217-190.ap-south-1.compute.amazonaws.com

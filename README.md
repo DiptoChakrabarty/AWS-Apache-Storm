@@ -35,3 +35,8 @@ ansible-playbook  --vault-password-file=".password" -i ./hosts ec2.yml
 ```
 
 <img src="images/storm.png">
+
+
+
+
+<img src="images/svc.png">

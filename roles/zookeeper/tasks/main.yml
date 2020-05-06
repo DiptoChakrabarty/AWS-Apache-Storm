@@ -13,7 +13,7 @@
 
 - name: download zookeeper tar
   get_url:
-    url: http://archive.apache.org/dist/zookeeper/zookeeper-3.6.1/apache-zookeeper-3.6.1.tar.gz
+    url: https://mirrors.estointernet.in/apache/zookeeper/zookeeper-3.6.1/apache-zookeeper-3.6.1-bin.tar.gz
     dest: /root/zookeeper.tar.gz
     owner: "{{ storm }}"
 
@@ -30,9 +30,19 @@
 - name: configure and change conf file
   copy:
     src: zoo.cfg
-    dest: /etc/apache-zookeeper-3.6.1/conf/zoo.cfg
+    dest: /etc/apache-zookeeper-3.6.1-bin/conf/zoo.cfg
     owner: "{{ storm }}"
     group: zookeeper
+
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ storm }}"
+    group: zookeeper
+  with_items:
+    - /zookeeper
+    - /zookeeper/logs
 
 
 - name: Copy ZK service file
