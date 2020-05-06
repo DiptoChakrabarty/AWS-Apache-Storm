@@ -1,13 +1,13 @@
-- name: create zookeeper group
+- name: create storm group
   group:
     name: storm
     state: present
 
-- name: create zookeeper user
+- name: create storm user
   user: 
     name: storm
     password:  " {{ storm | password_hash('sha512') }}"
-    group: sudo
+    group: storm
     state: present
 
 - name: download apache storm tar
@@ -19,14 +19,21 @@
   unarchive:
     src: /root/storm.tar.gz
     dest: /usr/share/
+    remote_src: yes
+
+- name: permissions setup
+  file:
+    dest: /usr/share/apache-storm-2.1.0
     owner: storm
     group: storm
-    remote_src: yes
+    recurse: yes
 
 - name: copy config file
   copy:
     src: storm.yaml
     dest: /usr/share/apache-storm-2.1.0/conf/storm.yaml
+    owner: storm
+    group: storm
 
 
 - name: linking

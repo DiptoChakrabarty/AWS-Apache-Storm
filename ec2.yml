@@ -25,6 +25,14 @@
             to_port: 8080
             cidr_ip: 0.0.0.0/0
           - proto: tcp
+            from_port: 6627
+            to_port: 6627
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port: 2181
+            to_port: 2181
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
             from_port: 443
             to_port: 443
             cidr_ip: 0.0.0.0/0
@@ -90,7 +98,7 @@
       lineinfile:
         path: hostnew
         regexp: " nimbus.foo.com  nimbus"
-        line: "{{ item['public_ip'] }} nimbus.foo.com  nimbus"
+        line: "{{ item['private_ip'] }} nimbus.foo.com  nimbus"
       with_items: 
         - "{{ ec2_nimbus.instances }}"
 
@@ -98,7 +106,7 @@
       lineinfile:
         path: hostnew
         regexp: " ap-south-1.compute.amazonaws.com"
-        line: "{{ item['public_ip'] }} {{ item['public_dns_name'] }}  {{ item['public_dns_name'] }}"
+        line: "{{ item['private_ip'] }} {{ item['private_dns_name'] }}  {{ item['private_dns_name'] }}"
       with_items: 
       - "{{ ec2.instances }}"
         
