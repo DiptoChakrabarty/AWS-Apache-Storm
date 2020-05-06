@@ -10,10 +10,10 @@ SyslogIdentifier=zookeeper
 Type=simple
 User=zookeeper
 Group=zookeeper
-WorkingDirectory=/etc/apache-zookeeper-3.6.0-bin
-ExecStart=/etc/apache-zookeeper-3.6.0-bin/bin/zkServer.sh start-foreground /etc/apache-zookeeper-3.6.0-bin/conf/zoo.cfg
-ExecStop=/etc/apache-zookeeper-3.6.0-bin/bin/zkServer.sh stop /etc/apache-zookeeper-3.6.0-bin/conf/zoo.cfg
-ExecReload=/etc/apache-zookeeper-3.6.0-bin/bin/zkServer.sh restart /etc/apache-zookeeper-3.6.0-bin/conf/zoo.cfg
+WorkingDirectory=/etc/apache-zookeeper-3.6.1
+ExecStart=/etc/apache-zookeeper-3.6./bin/zkServer.sh start-foreground /etc/apache-zookeeper-3.6.1/conf/zoo.cfg
+ExecStop=/etc/apache-zookeeper-3.6.1/bin/zkServer.sh stop /etc/apache-zookeeper-3.6.1/conf/zoo.cfg
+ExecReload=/etc/apache-zookeeper-3.6.1/bin/zkServer.sh restart /etc/apache-zookeeper-3.6.1/conf/zoo.cfg
 
 [Install]
 WantedBy=default.target
