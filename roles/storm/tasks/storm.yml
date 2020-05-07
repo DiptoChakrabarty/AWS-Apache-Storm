@@ -28,6 +28,13 @@
     group: storm
     recurse: yes
 
+- name: Create log directories
+  file:
+    dest: /var/log/storm/workers-artifacts/
+    owner: storm
+    group: storm
+    recurse: yes
+
 - name: copy config file
   copy:
     src: storm.yaml
