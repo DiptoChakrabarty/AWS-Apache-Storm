@@ -57,3 +57,19 @@
     state: directory
     owner: storm
     group: storm
+
+
+- name: Enable Log Viewer
+  template:
+    src: "services.j2"
+    dest: "/etc/systemd/system/{{ item }}.service"
+    owner: storm
+    group: storm
+  with_items:
+    - logviewer
+
+- name: Start service
+  service:
+    name: logviewer
+    state: started
+
