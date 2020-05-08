@@ -1,2 +1,3 @@
 storm: zookeeper
 zookeeper_version: 3.6.1
+storm_version: 2.1.0

@@ -46,9 +46,11 @@
 
 
 - name: Copy ZK service file
-  copy:
+  template:
     src: zookeeper.service
     dest: /etc/systemd/system/zookeeper.service
+    owner: storm
+    group: storm
 
 - name: Add nimbus and ui  service files
   template:
