@@ -12,7 +12,7 @@
 
 - name: download apache storm tar
   get_url:
-    url: http://apachemirror.wuchna.com/storm/apache-storm-"{{ storm_version }}"/apache-storm-"{{ storm_version }}".tar.gz
+    url: "http://apachemirror.wuchna.com/storm/apache-storm-{{ storm_version }}/apache-storm-{{ storm_version }}.tar.gz"
     dest: /root/storm.tar.gz
 
 - name: Untar apache storm
@@ -23,7 +23,7 @@
 
 - name: permissions setup
   file:
-    dest: /usr/share/apache-storm-"{{ storm_version }}"
+    dest: "/usr/share/apache-storm-{{ storm_version }}"
     owner: storm
     group: storm
     recurse: yes
@@ -38,14 +38,14 @@
 - name: copy config file
   copy:
     src: storm.yaml
-    dest: /usr/share/apache-storm-"{{ storm_version }}"/conf/storm.yaml
+    dest: "/usr/share/apache-storm-{{ storm_version }}/conf/storm.yaml"
     owner: storm
     group: storm
 
 
 - name: linking
   file:
-    src: /usr/share/apache-storm-"{{ storm_version }}"/bin/storm
+    src: "/usr/share/apache-storm-{{ storm_version }}/bin/storm"
     dest: /usr/bin/storm
     owner: storm
     group: storm
