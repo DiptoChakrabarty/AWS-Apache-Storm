@@ -13,7 +13,7 @@
 
 - name: download zookeeper tar
   get_url:
-    url: https://mirrors.estointernet.in/apache/zookeeper/zookeeper-3.6.1/apache-zookeeper-3.6.1-bin.tar.gz
+    url: https://mirrors.estointernet.in/apache/zookeeper/zookeeper-"{{ zookeeper_version }}"/apache-zookeeper-"{{ zookeeper_version }}"-bin.tar.gz
     dest: /root/zookeeper.tar.gz
     owner: "{{ storm }}"
 
@@ -30,7 +30,7 @@
 - name: configure and change conf file
   copy:
     src: zoo.cfg
-    dest: /etc/apache-zookeeper-3.6.1-bin/conf/zoo.cfg
+    dest: /etc/apache-zookeeper-"{{ zookeeper_version }}"-bin/conf/zoo.cfg
     owner: "{{ storm }}"
     group: zookeeper
 
