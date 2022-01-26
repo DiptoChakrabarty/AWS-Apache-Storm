@@ -1,5 +1,9 @@
 # AWS-Apache-Storm
 
+## About the Project
+
+Setup a full Apache Storm Cluster in AWS to perform realtime computation using Ansible. Edit configuration required by user and run playbook.
+Ansible will take care of all setup , define number of worker and nimbus nodes required and additional configuration in roles developed.
 
 ## How to Run 
 
