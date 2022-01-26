@@ -43,6 +43,15 @@ Key is to be present from before
 ansible-playbook  --vault-password-file=".password" -i ./hosts ec2.yml
 ```
 
+## Description of Roles
+```sh
+- There are two roles present
+  * storm
+  * zookeeper
+- Nimbus node both the roles are utilised
+- Worker nodes only zookeeper role is used
+```
+
 <img src="images/storm.png">
 
 
